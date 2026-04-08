@@ -1,10 +1,11 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 /*
 Shopping Cart program 
 f(x) = O(x)
 */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #define SIZE 21
 #define FMT "%20s"
 
