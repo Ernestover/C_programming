@@ -8,6 +8,10 @@ f(x) = O(x)
 #define SIZE 21
 #define FMT "%20s"
 
+// global variables
+char g_store[6][15] = {"juice", "milk", "eggs", "chicken", "cereal", "poptarts"};
+float g_prices[6] = {3.45, 2.99, 2.25, 7.89, 5.36, 4.12};
+
 // function stubs 
 void greetCustomer();
 void showMerch();
@@ -38,14 +42,10 @@ void greetCustomer() {
  * @brief shows the available merchandise and their associated price 
  */
 void showMerch() {
-    // declaring variables
-    char store[6][10] = {"juice", "milk", "eggs", "chicken", "cereal", "poptarts"};
-    float prices[6] = {3.45, 2.99, 2.25, 7.89, 5.36, 4.12};
-
     printf("Here is the list of merchandise in my store: \n");
-    int length = sizeof(store) / sizeof(store[0]); 
+    int length = sizeof(g_store) / sizeof(g_store[0]); 
     for (int x=0; x<length; x++) {
-        printf("%s : $%.2f\n",store[x], prices[x]);
+        printf("%s : $%.2f\n",g_store[x], g_prices[x]);
     }
     return; 
 }
@@ -55,17 +55,39 @@ void showMerch() {
  * @note input must be in the form (item, item, item, ...)
  */
 void returnTotal() {
-    // declaring variables 
+    // local variables 
+    float total = 0.0;
     int letter;
     char user_items[50]; // size of 50 allocated for user items 
-    char *input_list = (char *)malloc(sizeof(char)*30);
+    int i = 0;
+    int stock_check = 0;
+
     printf("\n\nPlease make your selection from the list of items above: ");
     printf("\nFormat for input -> item, item, ... : ");
-    while ((letter = getchar()) != "\n") {
-        printf("%c",letter);
+
+    while ((letter = getchar()) != '\n' && letter != EOF);
+
+    while ((letter = getchar()) != '\n' && i<49) {
+        user_items[i++] = (char)letter;
+    }
+    user_items[i] = '\0'; // mark end of string
+    
+    char *token = strtok(user_items, ", ");
+    while (token != NULL) {
+       for (int i=0; i<6; i++) {
+            if (strcmp(token, g_store[i]) == 0) {
+                total += g_prices[i];
+                printf("%s added: $%.2f\n", g_store[i], g_prices[i]);
+            }
+            else {stock_check++;}
+       }
+        token = strtok(NULL, ", ");
     }
 
-    free(input_list);
+    printf("\nYour total is: $%.2f\n", total);
+    if (stock_check != 0) {printf("\nOne of the items you selected is not in stock at the moment.");}
+        
     return;
 }
+
 
