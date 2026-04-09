@@ -1,6 +1,6 @@
 /*
-Shopping Cart program 
-f(x) = O(x)
+* Shopping Cart program 
+* f(x) = O(x)
 */
 #include <stdio.h>
 #include <string.h>
