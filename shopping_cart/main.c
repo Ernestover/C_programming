@@ -1,4 +1,5 @@
-/*
+/**
+* Ernest Stover
 * Shopping Cart program 
 * f(x) = O(x)
 */
@@ -18,7 +19,8 @@ void greetCustomer();
 void showMerch();
 void returnTotal();
 
-int main() {
+int main() 
+{
     greetCustomer();
     showMerch();
     returnTotal();
@@ -28,7 +30,8 @@ int main() {
 /**
  * @brief asks the user for their name then greets them
  */
-void greetCustomer() {
+void greetCustomer() 
+{
     char *name = (char *)malloc(sizeof(char)*SIZE);
     printf("Enter your name: ");
     scanf(FMT, name);
@@ -42,7 +45,8 @@ void greetCustomer() {
 /**
  * @brief shows the available merchandise and their associated price 
  */
-void showMerch() {
+void showMerch() 
+{
     printf("Here is the list of merchandise in my store: \n");
     int length = sizeof(g_store) / sizeof(g_store[0]); 
     for (int x=0; x<length; x++) {
@@ -55,7 +59,8 @@ void showMerch() {
  * @brief parse input from the user and return their total from the items they picked
  * @note input must be in the form (item, item, item, ...)
  */
-void returnTotal() {
+void returnTotal() 
+{
     // local variables 
     float total = 0.0;
     int letter;
