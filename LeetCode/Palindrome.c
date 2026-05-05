@@ -1,3 +1,8 @@
+/**
+ * Given an integer x, return true if x is a palindrome, and false otherwise 
+ * Palindrome: an int is a palindrome when it reads the same way forwards and backwards
+ */
+
 #include <stdio.h>
 #include <stdbool.h>
 
