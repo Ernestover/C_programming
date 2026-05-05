@@ -1,12 +1,16 @@
+/**
+ * Given an integer x, return true if x is a palindrome, and false otherwise
+ * Palindrome: a int that reads the same backwards and forwards 
+ */
 #include <stdio.h>
 #include <stdbool.h>
 
 bool isPalindrome(int x);
 
 int main() {
-    isPalindrome(121);
-    isPalindrome(-121);
-    isPalindrome(10);
+    printf("%d\n",isPalindrome(121));
+    printf("%d\n",isPalindrome(-121));
+    printf("%d\n",isPalindrome(10));
 }
 
 bool isPalindrome(int x) {
@@ -18,7 +22,6 @@ bool isPalindrome(int x) {
         reverse = reverse * 10 + remainder;
         dummy /= 10;
     }
-    printf("%d ? %d\n",reverse, x);
     if (reverse == x) {return true;}
     return false;
 }
